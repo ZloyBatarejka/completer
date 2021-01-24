@@ -1,13 +1,16 @@
-import { observer } from 'mobx-react';
 import React from 'react';
-import AuthService from '../stores/auth';
+import { observer } from 'mobx-react';
 import { useHistory } from "react-router-dom";
-import { Grid } from '@material-ui/core';
-const authService = new AuthService();
+import { TextField } from '@material-ui/core';
+import FloatingButton from 'src/components/floatingButton/FloatingButton';
+import 'src/styles/auth.scss';
+import AuthService from 'src/stores/auth';
 
+const authService = new AuthService();
 
 export const Auth = observer(() => {
 
+    /** хистори  для редиректа*/
     const history = useHistory();
 
     /** cb для редиректа */
@@ -20,13 +23,21 @@ export const Auth = observer(() => {
         authService.login(redirect)
     }
 
+    const y = 'gsdf';
+    const z = 'df';
+
     return (
-        <Grid className="wrapper">
+        <div className="wrapper">
             <div className="Background"></div>
             <div className="AuthBack"></div>
             <div className="Auth">
-                sasa
+                <TextField fullWidth label="Email" variant="outlined" style={{marginBottom: 45}}/>
+                <TextField fullWidth label="Password" variant="outlined" style={{marginBottom: 80}}/>
+                <div className = 'Auth-buttons'>
+                    <FloatingButton label="Войти" callback={login.bind(this)}/>
+                    <FloatingButton label="Регистрация" callback={() => {console.log(z)}}/>
+                </div>
             </div>
-        </Grid>
+        </div>
     )
 })
