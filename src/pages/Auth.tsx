@@ -2,6 +2,7 @@ import { observer } from 'mobx-react';
 import React from 'react';
 import AuthService from '../stores/auth';
 import { useHistory } from "react-router-dom";
+import { Grid } from '@material-ui/core';
 const authService = new AuthService();
 
 
@@ -20,8 +21,12 @@ export const Auth = observer(() => {
     }
 
     return (
-        <div>
-            <button onClick={login}>Залогинится</button>
-        </div>
+        <Grid className="wrapper">
+            <div className="Background"></div>
+            <div className="AuthBack"></div>
+            <div className="Auth">
+                sasa
+            </div>
+        </Grid>
     )
 })
