@@ -10,20 +10,9 @@ const GuardedRoute: React.FC<RouteProps> = ({component: Component, ...rest}) => 
 
     return (
         <div>
-            <Route {...rest} render={props => {
-                if (authService.auth) {
-                    return <Component  {...props} />
-                } else {
-                    return <Redirect to = {
-                        {
-                            pathname: '/auth',
-                            state: {
-                                from: props.location
-                            }
-                        }
-                    }/>
-                }   
-            }} />
+            <Route {...rest} render={ props => authService.auth ? 
+            <Component  {...props} /> 
+            : <Redirect to={{pathname: '/auth',state: {from: props.location} }}/> }/>
         </div>
     )
 }
